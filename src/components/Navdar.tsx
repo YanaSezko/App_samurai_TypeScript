@@ -1,8 +1,9 @@
 import React from "react";
+import s from './Navdar.module.css'
 
 const Navbar=()=>{
     return(
-        <nav className="nav">
+        <nav className={s.nav}>
             <ul>
                 <li><a href="#">Profile</a></li>
                 <li><a href="#">Messages</a></li>
