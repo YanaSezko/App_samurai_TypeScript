@@ -3,6 +3,8 @@ import './App.css';
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navdar";
 import Profile from "./components/Profile/Profile";
+import Dialogs from "./components/Dialogs/Dialogs";
+import s from "./components/Profile/Profile.module.css";
 
 
 const App = () => {
@@ -10,8 +12,10 @@ const App = () => {
         <div className="app-wrapper">
             <Header/>
             <Navbar/>
-            <Profile/>
-
+            <main className='app-wrapper-content'>
+                {/*<Profile/>*/}
+                <Dialogs/>
+            </main>
         </div>
     )
 }
