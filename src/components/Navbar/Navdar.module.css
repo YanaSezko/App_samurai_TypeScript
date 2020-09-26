@@ -1,4 +1,16 @@
 .nav{
+    color: #fff;
     grid-area: n;
-    background-color: #cdddff;
+    background-color: #80a4ff;
+
+}
+.nav ul{
+    list-style: none;
+ }
+.nav a{
+    text-decoration: none;
+color: #fff;
+}
+.nav a.active{
+    color: #ffcaca;
 }
