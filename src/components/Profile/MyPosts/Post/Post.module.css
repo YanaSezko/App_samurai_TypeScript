@@ -1,0 +1,9 @@
+.item{
+    list-style: none;
+}
+.item img{
+    height: 50px;
+    width: 50px;
+    border: 1px solid #000;
+    border-radius: 50%;
+}
