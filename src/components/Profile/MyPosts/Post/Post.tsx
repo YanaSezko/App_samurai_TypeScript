@@ -5,10 +5,10 @@ type postPropsType = {
     message: string
 }
 
-const Post = (props:postPropsType) => {
+const Post: React.FC<postPropsType> = (props) => {
     return (
         <li className={s.item}>
-            <img src="https://cdn.icon-icons.com/icons2/2121/PNG/512/avatar_woman_female_girl_people_icon_131282.png"
+            <img src="https://cdn.icon-icons.com/icons2/1698/PNG/256/60instagramhighlighticons117_112130.png"
                  alt="avatar"/>{props.message}</li>
     )
 }

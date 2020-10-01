@@ -2,7 +2,7 @@ import React from "react";
 import s from './Navdar.module.css'
 import {NavLink} from "react-router-dom";
 
-const Navbar = () => {
+const Navbar: React.FC<any> = () => {
     return (
         <nav className={s.nav}>
             <ul>
