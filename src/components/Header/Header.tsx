@@ -1,11 +1,11 @@
 import React from "react";
-import s from './Header.module.css'
+import s from './Header.module.css';
+import logo from "../../img/logo.png"
 
 const Header: React.FC<any> = () => {
     return (
         <header className={s.header}>
-            <img src="https://cdn.icon-icons.com/icons2/1698/PNG/256/60instagramhighlighticons117_112130.png"
-                 alt="logo"/>
+            <img src={logo} alt="logo"/>
         </header>
     )
 }

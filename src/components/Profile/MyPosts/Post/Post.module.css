@@ -1,5 +1,6 @@
 .item{
     list-style: none;
+    padding: 15px;
 }
 .item img{
     height: 50px;

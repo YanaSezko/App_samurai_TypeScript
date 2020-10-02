@@ -7,7 +7,6 @@ const Profile: React.FC<any> = () => {
     return (
         <div className={s.content}>
             <ProfileInfo/>
-
             <MyPosts/>
         </div>
     )
