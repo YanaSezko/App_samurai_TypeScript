@@ -28,31 +28,32 @@ const Message = (props: MessageType) => {
 }
 
 const Dialogs: React.FC<any> = (props) => {
-    let dialogsData = [
-        {id:1, name:'Yana'},
-        {id:2, name:'Olya'},
-        {id:3, name:'Vova'},
-        {id:4, name:'Alex'},
-        {id:5, name:'Zlata'}
-        ]
-    let messagesData = [
-        {id:1, message:'Hi'},
-        {id:2, message:'Hello'},
-        {id:3, message:'How are you?'},
+    let dialogs = [
+        {id: 1, name: 'Yana'},
+        {id: 2, name: 'Olya'},
+        {id: 3, name: 'Vova'},
+        {id: 4, name: 'Alex'},
+        {id: 5, name: 'Zlata'}
     ]
+    let dialogsElements = dialogs
+        .map(d => <DialigItem name={d.name} id={d.id}/>)
+
+    let messagesData = [
+        {id: 1, message: 'Hi'},
+        {id: 2, message: 'Hello'},
+        {id: 3, message: 'How are you?'},
+    ]
+    let messagesElements = messagesData
+        .map(m => <Message message={m.message}/>)
+
+
     return (
         <div className={s.dialogs}>
             <ul className={s.dialogsItems}>
-                <DialigItem name={dialogsData[0].name} id={dialogsData[0].id}/>
-                <DialigItem name={dialogsData[1].name} id={dialogsData[1].id}/>
-
+                {dialogsElements}
             </ul>
             <div className={s.messages}>
-                <Message message={messagesData[0].message}/>
-                <Message message={messagesData[1].message}/>
-                <Message message={messagesData[2].message}/>
-
-
+                {messagesElements}
             </div>
 
 
