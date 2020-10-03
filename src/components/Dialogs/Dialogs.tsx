@@ -2,40 +2,18 @@ import React from "react";
 import s from './Dialogs.module.css';
 import DialigItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
+import {DialogPageType} from "../../redux/state";
 
-
-type DilogType = {
-    name: string
-    id: number
-}
-type dialogsItemsType = {
-    users: Array<DilogType>
-}
-type MessageType = {
-    message: string
-}
-type MessagesType = {
-    messages: Array<MessageType>
+type DialogsType={
+    state:DialogPageType
 }
 
+const Dialogs = (props:DialogsType) => {
 
-const Dialogs: React.FC<any> = (props) => {
-    let dialogs = [
-        {id: 1, name: 'Yana'},
-        {id: 2, name: 'Olya'},
-        {id: 3, name: 'Vova'},
-        {id: 4, name: 'Alex'},
-        {id: 5, name: 'Zlata'}
-    ]
-    let dialogsElements = dialogs
+    let dialogsElements = props.state.dialogs
         .map(d => <DialigItem name={d.name} id={d.id}/>)
 
-    let messagesData = [
-        {id: 1, message: 'Hi'},
-        {id: 2, message: 'Hello'},
-        {id: 3, message: 'How are you?'},
-    ]
-    let messagesElements = messagesData
+    let messagesElements = props.state.messages
         .map(m => <Message message={m.message}/>)
 
 
@@ -47,8 +25,6 @@ const Dialogs: React.FC<any> = (props) => {
             <div className={s.messages}>
                 {messagesElements}
             </div>
-
-
         </div>
     )
 }

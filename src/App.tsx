@@ -6,16 +6,23 @@ import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
 import s from "./components/Profile/Profile.module.css";
 import {BrowserRouter, Route} from "react-router-dom";
+import {RootStateType} from "./redux/state";
 
-const App: React.FC<any> = () => {
+
+type AppType={
+    state: RootStateType
+
+}
+
+const App: React.FC<AppType> = (props) => {
     return (
         <BrowserRouter>
             <div className="app-wrapper">
                 <Header/>
                 <Navbar/>
                 <main className='app-wrapper-content'>
-                    <Route path='/profile' render={()=><Profile/>}/>
-                    <Route /*exact*/ path='/dialogs' render={()=><Dialogs/>}/>
+                    <Route path='/profile' render={()=><Profile state={props.state.profilePage} />}/>
+                    <Route /*exact*/ path='/dialogs' render={()=><Dialogs state={props.state.dialogPage} />}/>
                 </main>
             </div>
         </BrowserRouter>

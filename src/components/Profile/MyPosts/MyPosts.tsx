@@ -1,13 +1,16 @@
 import React from "react";
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
+import {PostType, ProfilePageType} from "../../../redux/state";
 
-const MyPosts: React.FC<any> = () => {
-    let posts = [
-        {id:1, message:"Hi, how are you?"},
-        {id:2, message:"It's my first post"},
-    ]
-    let postsElements = posts.map(p=><Post message={p.message}/>)
+type myPostsType={
+    // posts:PostType
+    state:ProfilePageType
+}
+
+const MyPosts = (props:myPostsType) => {
+
+    let postsElements = props.state.posts.map(p => <Post id={p.id} message={p.message}/>)
 
     return (
         <section className={s.myposts}>
