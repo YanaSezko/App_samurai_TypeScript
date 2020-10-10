@@ -4,17 +4,13 @@ import DialigItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {DialogPageType} from "../../redux/state";
 
-type DialogsType={
-    state:DialogPageType
-}
-
-const Dialogs = (props:DialogsType) => {
+const Dialogs: React.FC<{state:DialogPageType}> = (props) => {
 
     let dialogsElements = props.state.dialogs
         .map(d => <DialigItem name={d.name} id={d.id}/>)
 
     let messagesElements = props.state.messages
-        .map(m => <Message message={m.message}/>)
+        .map(m => <Message message={m.message} id={m.id}/>)
 
 
     return (

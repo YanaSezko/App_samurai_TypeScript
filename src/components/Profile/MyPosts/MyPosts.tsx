@@ -1,23 +1,25 @@
 import React from "react";
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
-import {PostType, ProfilePageType} from "../../../redux/state";
+import {ProfilePageType} from "../../../redux/state";
 
-type myPostsType={
-    // posts:PostType
-    state:ProfilePageType
-}
+const MyPosts: React.FC<ProfilePageType> = (props) => {
 
-const MyPosts = (props:myPostsType) => {
+    let postsElements= props.posts.map(p => <Post id={p.id} message={p.message}/>)
 
-    let postsElements = props.state.posts.map(p => <Post id={p.id} message={p.message}/>)
+    let newPostElement: React.RefObject<any>=React.createRef();
+
+    function addPost(){
+       let text=newPostElement.current.value;
+       alert(text)
+    }
 
     return (
         <section className={s.myposts}>
             <h2>my posts</h2>
             <div>
-                <textarea>Текст поста</textarea>
-                <p><button>Add post</button></p>
+                <textarea ref={newPostElement}>Текст поста</textarea>
+                <p><button onClick={addPost}>Add post</button></p>
             </div>
             <ul>
                 {postsElements}
