@@ -43,6 +43,14 @@ let state:RootStateType = {
             {id: 5, name: 'Zlata'}
         ]
     }
-
 }
+
+export function addPost(postMessage:string){
+    let newPost={
+        id:3,
+        message:postMessage
+    }
+    state.profilePage.posts.push(newPost)
+}
+
 export default state;

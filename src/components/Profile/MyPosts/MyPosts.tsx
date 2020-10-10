@@ -1,9 +1,14 @@
 import React from "react";
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
-import {ProfilePageType} from "../../../redux/state";
+import {PostType} from "../../../redux/state";
 
-const MyPosts: React.FC<ProfilePageType> = (props) => {
+type MyPostType={
+    posts: PostType[]
+    addPost:(postMessage: string)=>void
+}
+
+const MyPosts: React.FC<MyPostType> = (props) => {
 
     let postsElements= props.posts.map(p => <Post id={p.id} message={p.message}/>)
 
@@ -11,7 +16,7 @@ const MyPosts: React.FC<ProfilePageType> = (props) => {
 
     function addPost(){
        let text=newPostElement.current.value;
-       alert(text)
+     props.addPost(text)
     }
 
     return (

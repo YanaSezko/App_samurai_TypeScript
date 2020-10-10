@@ -6,12 +6,12 @@ import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
 import s from "./components/Profile/Profile.module.css";
 import {Route} from "react-router-dom";
-import {RootStateType} from "./redux/state";
+import {addPost, RootStateType} from "./redux/state";
 
 
 type AppType={
     state: RootStateType
-
+    addPost:(postMessage: string) => void
 }
 
 const App: React.FC<AppType> = (props) => {
@@ -20,7 +20,7 @@ const App: React.FC<AppType> = (props) => {
                 <Header/>
                 <Navbar/>
                 <main className='app-wrapper-content'>
-                    <Route path='/profile' render={()=><Profile state={props.state.profilePage} />}/>
+                    <Route path='/profile' render={()=><Profile state={props.state.profilePage} addPost={props.addPost} />}/>
                     <Route /*exact*/ path='/dialogs' render={()=><Dialogs state={props.state.dialogPage} />}/>
                 </main>
             </div>
