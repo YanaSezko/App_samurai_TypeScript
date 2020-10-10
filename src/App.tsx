@@ -4,9 +4,8 @@ import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navdar";
 import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
-import s from "./components/Profile/Profile.module.css";
 import {Route} from "react-router-dom";
-import {addPost, RootStateType} from "./redux/state";
+import {RootStateType} from "./redux/state";
 
 
 type AppType={

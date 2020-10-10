@@ -3,20 +3,21 @@ import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 import {PostType} from "../../../redux/state";
 
-type MyPostType={
+type MyPostType = {
     posts: PostType[]
-    addPost:(postMessage: string)=>void
+    addPost: (postMessage: string) => void
 }
 
 const MyPosts: React.FC<MyPostType> = (props) => {
 
-    let postsElements= props.posts.map(p => <Post id={p.id} message={p.message}/>)
+    let postsElements = props.posts.map(p => <Post id={p.id} message={p.message}/>)
 
-    let newPostElement: React.RefObject<any>=React.createRef();
+    let newPostElement: React.RefObject<any> = React.createRef();
 
-    function addPost(){
-       let text=newPostElement.current.value;
-     props.addPost(text)
+    function addPost() {
+        let text = newPostElement.current.value;
+        props.addPost(text)
+        newPostElement.current.value=''
     }
 
     return (
@@ -24,7 +25,9 @@ const MyPosts: React.FC<MyPostType> = (props) => {
             <h2>my posts</h2>
             <div>
                 <textarea ref={newPostElement}>Текст поста</textarea>
-                <p><button onClick={addPost}>Add post</button></p>
+                <p>
+                    <button onClick={addPost}>Add post</button>
+                </p>
             </div>
             <ul>
                 {postsElements}
