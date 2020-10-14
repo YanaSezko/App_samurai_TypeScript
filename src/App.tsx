@@ -5,12 +5,13 @@ import Navbar from "./components/Navbar/Navdar";
 import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
 import {Route} from "react-router-dom";
-import {RootStateType} from "./redux/state";
+import {RootStateType, updateNewPostText} from "./redux/state";
 
 
 type AppType={
     state: RootStateType
-    addPost:(postMessage: string) => void
+    addPost:() => void
+    updateNewPostText:(newText:string)=>void
 }
 
 const App: React.FC<AppType> = (props) => {
@@ -19,7 +20,7 @@ const App: React.FC<AppType> = (props) => {
                 <Header/>
                 <Navbar/>
                 <main className='app-wrapper-content'>
-                    <Route path='/profile' render={()=><Profile state={props.state.profilePage} addPost={props.addPost} />}/>
+                    <Route path='/profile' render={()=><Profile profilePage={props.state.profilePage} addPost={props.addPost} updateNewPostText={props.updateNewPostText}/>}/>
                     <Route /*exact*/ path='/dialogs' render={()=><Dialogs state={props.state.dialogPage} />}/>
                 </main>
             </div>

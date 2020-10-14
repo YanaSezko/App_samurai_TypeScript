@@ -5,11 +5,11 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import {ProfilePageType} from "../../redux/state";
 
 
-const Profile: React.FC<{state:ProfilePageType, addPost:(postMessage: string) => void}> = (props) => {
+const Profile: React.FC<{profilePage:ProfilePageType, addPost:() => void,updateNewPostText:(newText:string)=>void}> = (props) => {
     return (
         <div className={s.content}>
             <ProfileInfo/>
-            <MyPosts posts={props.state.posts} addPost={props.addPost} />
+            <MyPosts posts={props.profilePage.posts} newPostText={props.profilePage.newPostText} addPost={props.addPost} updateNewPostText={props.updateNewPostText}/>
         </div>
     )
 }

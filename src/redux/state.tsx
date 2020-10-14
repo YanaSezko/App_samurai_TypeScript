@@ -14,6 +14,7 @@ export type PostType={
 }
 export type ProfilePageType={
     posts:Array<PostType>
+    newPostText:string
 }
 export type DialogPageType={
     messages:Array<MessageType>
@@ -29,7 +30,8 @@ let state:RootStateType = {
         posts:[
             {id:1, message:"Hi, how are you?"},
             {id:2, message:"It's my first post"},
-        ]
+        ],
+        newPostText:"текс сообщения"
     },
     dialogPage:{
         messages:[
@@ -47,12 +49,17 @@ let state:RootStateType = {
     }
 }
 
-export function addPost(postMessage:string){
+export function addPost(){
     let newPost={
         id:3,
-        message:postMessage
+        message:state.profilePage.newPostText
     }
     state.profilePage.posts.push(newPost)
+    state.profilePage.newPostText=''
+    rerenderEntireTree(state)
+}
+export function updateNewPostText(newText:string){
+    state.profilePage.newPostText=newText
     rerenderEntireTree(state)
 }
 
