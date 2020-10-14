@@ -1,5 +1,6 @@
-import {rerenderEntireTree} from "../render";
-
+let rerenderEntireTree=(state:any)=>{
+    console.log('state changed')
+}
 export type MessageType={
     id:number
     message:string
@@ -50,7 +51,7 @@ let state:RootStateType = {
 }
 
 export function addPost(){
-    let newPost={
+    let newPost:PostType = {
         id:3,
         message:state.profilePage.newPostText
     }
@@ -61,6 +62,9 @@ export function addPost(){
 export function updateNewPostText(newText:string){
     state.profilePage.newPostText=newText
     rerenderEntireTree(state)
+}
+export function subscribe(observer:any){
+rerenderEntireTree=observer
 }
 
 export default state;

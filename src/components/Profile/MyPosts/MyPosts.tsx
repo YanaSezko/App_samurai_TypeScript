@@ -6,24 +6,27 @@ import {PostType} from "../../../redux/state";
 type MyPostType = {
     posts: PostType[]
     addPost: () => void
-    newPostText:string
-    updateNewPostText:(newText:string)=>void
+    newPostText: string
+    updateNewPostText: (newText: string) => void
 }
 
 const MyPosts: React.FC<MyPostType> = (props) => {
 
     let postsElements = props.posts.map(p => <Post id={p.id} message={p.message}/>)
 
-    let newPostElement: React.RefObject<any> = React.createRef();
+    let newPostElement = React.createRef<HTMLTextAreaElement>();
 
     function addPost() {
         props.addPost()
     }
-function onPostChange(){
-let text=newPostElement.current.value
-    props.updateNewPostText(text)
-}
 
+    function onPostChange() {
+        if(newPostElement.current){
+            let text = newPostElement.current.value
+            props.updateNewPostText(text)
+        }
+    }
+//newPostElement.current?.value
     return (
         <section className={s.myposts}>
             <h2>my posts</h2>
