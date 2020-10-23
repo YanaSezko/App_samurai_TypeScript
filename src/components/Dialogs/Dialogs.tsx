@@ -2,13 +2,9 @@ import React, {ChangeEvent} from "react";
 import s from './Dialogs.module.css';
 import DialigItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import {
-    DialogPageType,
-    sendMessageActionCreator,
-    StoreType,
-    updateNewMessageBodyActionCreator
-} from "../../redux/state";
-import {strictEqual} from "assert";
+import {sendMessageActionCreator,updateNewMessageBodyActionCreator
+} from "../../redux/dialogs-reducer";
+import {StoreType} from "../../redux/state";
 
 const Dialogs: React.FC<{store:StoreType}> = (props) => {
 let state=props.store.getState().dialogPage
