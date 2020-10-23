@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar/Navdar";
 import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
 import {Route} from "react-router-dom";
-import {ActionsType, StoreType} from "./redux/state";
+import store, {ActionsType, StoreType} from "./redux/state";
 
 
 type AppType = {
@@ -21,7 +21,7 @@ const App: React.FC<AppType> = (props) => {
             <Navbar/>
             <main className='app-wrapper-content'>
                 <Route path='/profile' render={() => <Profile profilePage={state.profilePage} dispatch={props.store.dispatch.bind(props.store)}/>}/>
-                <Route /*exact*/ path='/dialogs' render={() => <Dialogs state={state.dialogPage}/>}/>
+                <Route /*exact*/ path='/dialogs' render={() => <Dialogs store={props.store}/>}/>
             </main>
         </div>
     )
