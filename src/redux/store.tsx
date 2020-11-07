@@ -14,7 +14,7 @@ export type ActionsType =
     | SendMessageActionType
     | UpdateNewMessageBodyActionType
 
-let store: StoreType = {
+export let store: StoreType = {
     _state: {
         profilePage: {
             posts: [
@@ -49,11 +49,10 @@ let store: StoreType = {
     subscribe(observer) {
         this._rerenderEntireTree = observer
     },
-
     dispatch(action) {
-        this._state.profilePage = profileReducer(this._state.profilePage, action)
-        this._state.dialogPage = dialogsReducer(this._state.dialogPage, action)
-        this._rerenderEntireTree(this._state)
+        store._state.profilePage = profileReducer(store._state.profilePage, action)
+        store._state.dialogPage = dialogsReducer(store._state.dialogPage, action)
+        store._rerenderEntireTree(store._state)
     }
 
 }

@@ -7,15 +7,16 @@ import Dialogs from "./components/Dialogs/Dialogs";
 import { Route } from "react-router-dom";
 import { ActionsType, RootStateType, StoreType } from './redux/store';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
+import UsersContainer from './components/Users/UsersContainer';
 
 
 /* type AppType = {
     state: RootStateType
     store: StoreType
     dispatch: (action: ActionsType) => void
-}
- */
-const App = (props:any) => {
+} */
+
+const App = () => {
     return (
         <div className="app-wrapper">
             <Header />
@@ -23,6 +24,7 @@ const App = (props:any) => {
             <main className='app-wrapper-content'>
                 <Route path='/profile' render={() => <Profile />} />
                 <Route /*exact*/ path='/dialogs' render={() => <DialogsContainer />} />
+                <Route path='/users' render={() => <UsersContainer />} />
             </main>
         </div>
     )

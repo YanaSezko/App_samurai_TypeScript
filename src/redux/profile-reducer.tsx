@@ -6,27 +6,33 @@ export type UpdateNewPostTextActionType = ReturnType<typeof updateNewPostTextAct
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
-let initialState={
+let initialState = {
     posts: [
-        {id: 1, message: "Hi, how are you?"},
-        {id: 2, message: "It's my first post"},
+        { id: 1, message: "Hi, how are you?" },
+        { id: 2, message: "It's my first post" },
     ],
     newPostText: "текс сообщения"
 }
 
-const profileReducer = (state=initialState, action: ActionsType) => {
+const profileReducer = (state = initialState, action: ActionsType) => {
     switch (action.type) {
-        case UPDATE_NEW_POST_TEXT:
-            state.newPostText = action.newText
-            return state
-        case ADD_POST:
+        case ADD_POST: {
             let newPost: PostType = {
                 id: 3,
                 message: state.newPostText
             }
-            state.posts.push(newPost)
-            state.newPostText=''
-            return state
+            return {
+                ...state,
+                posts: [...state.posts, newPost],
+                newPostText: ""
+            }
+        }
+        case UPDATE_NEW_POST_TEXT: {
+            return {
+                ...state,
+                newPostText: action.newText
+            }
+        }
         default:
             return state
     }

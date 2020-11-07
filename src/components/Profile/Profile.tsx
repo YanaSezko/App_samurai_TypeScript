@@ -4,12 +4,8 @@ import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import {ActionsType, ProfilePageType, StoreType} from "../../redux/store";
 import MyPostsContainer from './MyPosts/MyPostsContainer';
-/* 
-type ProfileType={
-    store:StoreType
-} */
 
-const Profile= (props:any) => {
+const Profile= () => {
     return (
         <div className={s.content}>
             <ProfileInfo/>
