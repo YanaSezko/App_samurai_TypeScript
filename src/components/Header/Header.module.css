@@ -7,3 +7,18 @@
     height: 50px;
     margin: 5px 20px;
 }
+.loginBlock {
+    float: right;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 10px;
+    margin: 5px 20px;
+    border-radius: 20%;
+
+}
+.loginBlock a{
+    text-decoration: none;
+    color:white;
+    font-weight: bold;
+
+}

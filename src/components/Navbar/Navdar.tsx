@@ -10,9 +10,12 @@ const Navbar: React.FC<any> = () => {
                 >Profile</NavLink></li>
                 <li><NavLink to="/dialogs" activeClassName={s.active}
                 >Messages</NavLink></li>
+                <li><NavLink to="/users" activeClassName={s.active}
+                >Users</NavLink></li>
                 <li><NavLink to="#">News</NavLink></li>
                 <li><NavLink to="#">Music</NavLink></li>
                 <li><NavLink to="#">Settings</NavLink></li>
+                
             </ul>
         </nav>
     )

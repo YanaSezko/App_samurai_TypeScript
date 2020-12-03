@@ -1,7 +1,7 @@
 import React from "react";
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
-import {ActionsType, PostType} from "../../../redux/store";
+import {PostType} from "../../../redux/store";
 
 type MyPostType = {
     updateNewPostText:(text:string)=>void
