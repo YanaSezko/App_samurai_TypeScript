@@ -12,6 +12,7 @@ import {
     setCurrentPage, 
     setTotalUsersCount } from './../../redux/users-reducer ';
 import Preloader from '../common/Preloader';
+import { RootStateType } from '../../redux/store';
 
 
 
@@ -87,17 +88,11 @@ type StateProps = ReturnType<typeof mapStateToProps>;
 //type DispatchProps = typeof mapDispatchToProps;
 
 
-let mapStateToProps = (state:AppStateType) => ({
-    
-       //@ts-ignore
+let mapStateToProps = (state:RootStateType) => ({
         users: state.usersPage.users,
-       //@ts-ignore
         pageSize: state.usersPage.pageSize,
-        //@ts-ignore
         totalUsersCount: state.usersPage.totalUsersCount,
-        //@ts-ignore
         currentPage: state.usersPage.currentPage,
-        //@ts-ignore
         isFetching: state.usersPage.isFetching
 
    
@@ -125,7 +120,7 @@ let mapStateToProps = (state:AppStateType) => ({
 
     }
 } */
-//@ts-ignore
+
 export default connect(mapStateToProps,{
         follow,
         unfollow,

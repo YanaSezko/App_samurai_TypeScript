@@ -7,24 +7,27 @@ import { setUserProfile,
     updateNewPostTextActionCreator,
     addPostActionCreator
  }from "../../redux/profile-reducer"
-import { withRouter } from "react-router-dom";
+import { RouteComponentProps, withRouter } from "react-router-dom";
+import { RootStateType } from "../../redux/store";
 
 
-type MapStatePropsType = {
+type PathParamsType = {
+    userId:any
+}
+type PropsType =RouteComponentProps<PathParamsType> & OwnPropsType
+
+type MapStatePropsType ={
     profile:any
 }
-type MapDispatchPropsType = {
-    setUserProfile:any
+type MapDispatchPropsType ={
+    setUserProfile:(profile:any)=>void
 }
-type OwnPropsType={
-   
-}
-type ProfilePropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType
+
+type OwnPropsType = MapStatePropsType & MapDispatchPropsType
 
 
 
-
-class ProfileContainer extends React.Component<any> {
+class ProfileContainer extends React.Component<PropsType> {
     componentDidMount(){
         let userId = this.props.match.params.userId
         if(!userId){userId=2}
@@ -46,14 +49,14 @@ class ProfileContainer extends React.Component<any> {
 }
 }
 
-let mapStateToProps =(state:AppStateType) =>({
+let mapStateToProps =(state:RootStateType):MapStatePropsType =>({
  profile: state.profilePage.profile 
 })
 
 export let WithUrlDataContainerComponent = withRouter(ProfileContainer)
 
 export default connect(mapStateToProps,{
-    setUserProfile,
+    setUserProfile/* ,
     updateNewPostTextActionCreator,
-    addPostActionCreator 
+    addPostActionCreator  */
 } )(WithUrlDataContainerComponent);

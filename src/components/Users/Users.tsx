@@ -27,9 +27,11 @@ let Users = (props:UsersPropsType)=> {
     for(let i=1; i<=pagesCount; i++){
         pages.push(i)
 }
+debugger
     return   <div>
               <div>
         {
+            
         pages.map((p:any,index) => <span key={p.index} className={(props.currentPage === p)? styles.selected:""}
                             onClick={(e)=>{
                                 props.onPageChanged(p)
