@@ -2,7 +2,8 @@ import profileReducer, { ProfileActionsType } from "./profile-reducer";
 import dialogsReducer, { DialogsActionsType } from "./dialogs-reducer";
 import usersReducer, { UsersActionsType } from "./users-reducer ";
 
-type ActionsType = UsersActionsType & DialogsActionsType & ProfileActionsType
+type ActionsType = UsersActionsType & DialogsActionsType 
+& ProfileActionsType  
 
 export type StoreType = {
     _state: RootStateType
@@ -56,7 +57,6 @@ export let store: StoreType = {
         
         store._state.profilePage = profileReducer(store._state.profilePage, action)
         store._state.dialogPage = dialogsReducer(store._state.dialogPage, action)
-        
         store._state.usersPage = usersReducer(store._state.usersPage, action)
 
         store._rerenderEntireTree(store._state)

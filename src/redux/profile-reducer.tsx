@@ -1,3 +1,4 @@
+import { usersAPI } from "../api/api";
 import { PostType } from "./store";
 
 
@@ -56,15 +57,22 @@ export const profileReducer = (state = initialState, action: ProfileActionsType)
             return state
     }
 }
-
+//actionCreator
 export const addPostActionCreator = () =>
     ({ type: ADD_POST } as const)
-
 export const updateNewPostTextActionCreator = (text: string) =>
     ({ type: UPDATE_NEW_POST_TEXT, newText: text } as const)
-
 export const setUserProfile = (profile:any) =>
     ({ type: SET_USER_PROFILE, profile } as const)
+
+
+//thunkCreator    
+export const getUserProfile = (userId:any) => (dispatch:any) => {
+    usersAPI.getProfile(userId).then(response => {
+        dispatch(setUserProfile(response.data))
+        })
+
+}
 
 
 
