@@ -1,8 +1,6 @@
 import React from 'react'
 import { connect } from "react-redux";
 import Users from "./Users"
-
-
 import { 
     followSuccess,
     unfollowSuccess, 
@@ -22,7 +20,7 @@ type MapStatePropsType = {
     isFetching: boolean
     pageSize: number
     currentPage: number
-    //pageNumber:number
+    pageNumber:number
     users: any
    
 }
@@ -53,14 +51,6 @@ class UsersContainer extends React.Component<UsersPropsType>{
     }
     onPageChanged = (pageNumber:number) => {
         this.props.getUsers(pageNumber,this.props.pageSize)
-       /*  this.props.setCurrentPage(pageNumber)
-        this.props.toggleIsFetching(true)
-       
-        usersAPI.getUsers(pageNumber,this.props.pageSize).then(data => {
-                this.props.toggleIsFetching(false)
-                this.props.setUsers(data.items)
-            }) */
-
     }
 
     render() {
@@ -80,10 +70,6 @@ class UsersContainer extends React.Component<UsersPropsType>{
     }
 }
 
-type StateProps = ReturnType<typeof mapStateToProps>;
-//type DispatchProps = typeof mapDispatchToProps;
-
-debugger
 let mapStateToProps = (state:RootStateType) => ({
     
         users: state.usersPage.users,

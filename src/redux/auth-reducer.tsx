@@ -11,14 +11,13 @@ export type UsersActionsType =
 | ReturnType<typeof setTotalUsersCount>
 | ReturnType<typeof toggleIsFetching>
  */
-/* 
+
 export type InitialStateType={
-    users:Array<any>
-    pageSize: number
-    totalUsersCount:number
-    currentPage:number
-    isFetching: boolean
-} */
+    userId: number|null,
+    email: string|null,
+    login: string|null,
+    isAuth: boolean
+}
 export type AuthActionsType =
     | ReturnType<typeof setAuthUserData>
 
@@ -29,7 +28,7 @@ let initialState = {
     login: null,
     isAuth: false
 }
-export const authReducer = (state: any = initialState, action: AuthActionsType) => {
+export const authReducer = (state:InitialStateType= initialState, action: AuthActionsType) => {
     switch (action.type) {
         case SET_USER_DATA:
             return {

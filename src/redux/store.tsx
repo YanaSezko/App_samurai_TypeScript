@@ -1,6 +1,7 @@
 import profileReducer, { ProfileActionsType } from "./profile-reducer";
 import dialogsReducer, { DialogsActionsType } from "./dialogs-reducer";
 import usersReducer, { UsersActionsType } from "./users-reducer ";
+import authReducer from "./auth-reducer";
 
 type ActionsType = UsersActionsType & DialogsActionsType 
 & ProfileActionsType  
@@ -40,6 +41,9 @@ export let store: StoreType = {
         },
         usersPage: {
             users: []
+        },
+        auth:{
+            isAuth:false
         }
     },
     _rerenderEntireTree() {
@@ -54,10 +58,12 @@ export let store: StoreType = {
     },
     
     dispatch(action){
-        
         store._state.profilePage = profileReducer(store._state.profilePage, action)
         store._state.dialogPage = dialogsReducer(store._state.dialogPage, action)
         store._state.usersPage = usersReducer(store._state.usersPage, action)
+        //@ts-ignore
+        store._state.auth = authReducer(store._state.auth, action)
+
 
         store._rerenderEntireTree(store._state)
     }
@@ -88,12 +94,15 @@ export type DialogPageType = {
     dialogs: Array<DialogType>
     newMessageBody: string
 }
+export type AuthPageType = any
 
 export type UsersPageType = any
+
 export type RootStateType = {
     profilePage: ProfilePageType
     dialogPage: DialogPageType
     usersPage: UsersPageType
+    auth:AuthPageType
 }
 
 

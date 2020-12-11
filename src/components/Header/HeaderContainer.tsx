@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import { connect } from "react-redux";
-import { RouteComponentProps } from "react-router-dom";
+import {getAuthUserData} from "./../../redux/auth-reducer"
 
 
 type PropsType = OwnPropsType
@@ -28,9 +28,10 @@ class HeaderContainer extends React.Component <PropsType>{
     }
 }
 const mapStateToProps=(state:any)=>({
-    isAuth:state.auth.isAuth,
-    login:state.auth.login
+
+/*     isAuth:state.auth.isAuth,
+    login:state.auth.login */
 
 })
-//@ts-ignore
+
 export default connect(mapStateToProps,{getAuthUserData})(HeaderContainer);
