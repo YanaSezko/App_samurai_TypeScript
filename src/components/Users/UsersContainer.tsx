@@ -9,10 +9,8 @@ import {
     getUsers} from './../../redux/users-reducer ';
 import Preloader from '../common/Preloader';
 import { RootStateType } from '../../redux/store';
-
-
-
-
+import { compose } from 'redux';
+import { withAuthRedirect } from './../../hoc/withAuthRedirect';
 
 type MapStatePropsType = {
    
@@ -82,9 +80,11 @@ let mapStateToProps = (state:RootStateType) => ({
    
 })
 
-export default connect(mapStateToProps,{
-    acceptFollow: followSuccess,
-    acceptUnfollow: unfollowSuccess,
-    setCurrentPage,
-  toggleFollowingProgress,
-getUsers})(UsersContainer)
+export default compose(
+    withAuthRedirect,
+    connect(mapStateToProps,{
+    followSuccess,
+    unfollowSuccess, setCurrentPage,
+    toggleFollowingProgress,
+    getUsers})
+)(UsersContainer)

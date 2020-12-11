@@ -1,14 +1,12 @@
 import React from 'react';
 import './App.css';
-import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navdar";
 import { Route } from "react-router-dom";
-import DialogsContainer from './components/Dialogs/DialogsContainer';
-import UsersContainer from './components/Users/UsersContainer';
-import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
-
+import ProfileContainer from './components/Profile/ProfileContainer';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
+import UsersContainer from './components/Users/UsersContainer'
 /* 
 type AppType = {
     state: RootStateType
@@ -23,9 +21,11 @@ const App = () => {
             <Navbar />
             <main className='app-wrapper-content'>
                 <Route path='/profile/:userId?' 
+                //@ts-ignore
                 render={() => <ProfileContainer />} />
                 
                 <Route /*exact*/ path='/dialogs' 
+                //@ts-ignore
                 render={() => <DialogsContainer />} />
                 
                 <Route path='/users' 
