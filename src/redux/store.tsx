@@ -22,7 +22,8 @@ export let store: StoreType = {
                 { id: 2, message: "It's my first post" },
             ],
             newPostText: "текс сообщения",
-            profile: {}
+            profile: {},
+            status:""
         },
         dialogPage: {
             messages: [
@@ -47,6 +48,7 @@ export let store: StoreType = {
         }
     },
     _rerenderEntireTree() {
+        store.getState()
         console.log('state changed')
     },
 
@@ -58,12 +60,12 @@ export let store: StoreType = {
     },
     
     dispatch(action){
+      
         store._state.profilePage = profileReducer(store._state.profilePage, action)
         store._state.dialogPage = dialogsReducer(store._state.dialogPage, action)
         store._state.usersPage = usersReducer(store._state.usersPage, action)
-        //@ts-ignore
+       //@ts-ignore
         store._state.auth = authReducer(store._state.auth, action)
-
 
         store._rerenderEntireTree(store._state)
     }
@@ -88,6 +90,7 @@ export type ProfilePageType = {
     posts: Array<PostType>
     newPostText: string
     profile: any
+    status:string
 }
 export type DialogPageType = {
     messages: Array<MessageType>
@@ -104,7 +107,5 @@ export type RootStateType = {
     usersPage: UsersPageType
     auth:AuthPageType
 }
-
-
 
 export default store;

@@ -14,7 +14,8 @@ type AppType = {
     dispatch: (action: ActionsType) => void
 
 } */
-const App = () => {
+const App = (props:any) => {
+    debugger
     return (
         <div className="app-wrapper">
             <HeaderContainer />

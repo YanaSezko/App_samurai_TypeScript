@@ -81,7 +81,7 @@ let mapStateToProps = (state:RootStateType) => ({
 })
 
 export default compose(
-    withAuthRedirect,
+    //withAuthRedirect,
     connect(mapStateToProps,{
     followSuccess,
     unfollowSuccess, setCurrentPage,

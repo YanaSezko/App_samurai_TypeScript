@@ -16,7 +16,7 @@ const ProfileInfo = (props:ProfileInfoType) => {
             alt="image"/>
     <section className={s.description}>
         <img src={logo} alt="img"/>
-       <ProfileStatus status={"Hello"}/>
+       <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
     </section>
     </>
 }
