@@ -20,4 +20,3 @@ export let store = createStore(reducers, applyMiddleware(thunkMiddleware));
 
 //@ts-ignore
 window.store = store;
-

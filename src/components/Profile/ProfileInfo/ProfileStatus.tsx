@@ -20,8 +20,19 @@ deactivateEditMode = () => {
 }
 
 onStatusChange=(e: React.ChangeEvent<HTMLInputElement>)=>{
-    this.setState(e.currentTarget.value)
+    this.setState({
+        status:e.currentTarget.value
+    })
 }
+
+componentDidUpdate(prevProps:any, prevState:any){
+   if(prevProps.status !== this.props.status){
+       this.setState({
+           status: this.props.status
+       })
+   }
+}
+
     render() {
         return <>
             {!this.state.editMode &&

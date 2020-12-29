@@ -2,45 +2,47 @@ import axios from 'axios'
 
 
 const instance = axios.create({
-    withCredentials:true,
-    baseURL:'https://social-network.samuraijs.com/api/1.0/',
+    withCredentials: true,
+    baseURL: 'https://social-network.samuraijs.com/api/1.0/',
     headers: {
-        "API-KEY":"2b6e2e12-95e4-4959-af89-fb3a85f352e8"
+        "API-KEY": "2b6e2e12-95e4-4959-af89-fb3a85f352e8"
     }
 })
 
-export const usersAPI={
-    getUsers(currentPage=1,pageSize=10){
+export const usersAPI = {
+    getUsers(currentPage = 1, pageSize = 10) {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`)
-        .then(response=>response.data)
-     },
-     follow(userId:any){
+            .then(response =>{
+                return response.data
+            })
+    },
+    follow(userId: any) {
         return instance.post(`follow/${userId}`)
-     },
-     unfollow(userId:number){
+    },
+    unfollow(userId: number) {
         return instance.delete(`follow/${userId}`)
     },
-    getProfile(userId:number){
-       console.log("Obsolele method. Please  profileAPI object.") 
-       return profileAPI.getProfile(userId)
-     
+    getProfile(userId: number) {
+        console.log("Obsolele method. Please  profileAPI object.")
+        return profileAPI.getProfile(userId)
+
     }
 }
 
-export const profileAPI={
-    getProfile(userId:number){
-       return instance.get(`profile/`+ userId)
+export const profileAPI = {
+    getProfile(userId: number) {
+        return instance.get(`profile/` + userId)
     },
-    getStatus(userId:number){
-        return instance.get(`profile/status/`+ userId)
+    getStatus(userId: number) {
+        return instance.get(`profile/status/` + userId)
     },
-    updateStatus(status:string){
-         return instance.put(`profile/status/`, {status:status})
+    updateStatus(status: string) {
+        return instance.put(`profile/status/`, { status: status })
     }
 }
 
-export const authAPI={
-    me(){
-       return instance.get(`auth/me`)
+export const authAPI = {
+    me() {
+        return instance.get(`auth/me`)
     }
 }

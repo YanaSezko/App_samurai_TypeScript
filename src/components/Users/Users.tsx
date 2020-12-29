@@ -3,8 +3,6 @@ import { NavLink } from "react-router-dom"
 import userPhoto from '../../img/logo.png'
 import { UserType } from "../../redux/store"
 import styles from './Users.module.css'
-import axios from 'axios';
-import { usersAPI } from './../../api/api';
 
 type UsersPropsType = {
     followingInProgress:any
@@ -27,6 +25,7 @@ let Users = (props: UsersPropsType) => {
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
     }
+    debugger
     return <div>
         <div>
             {pages.map(p => {

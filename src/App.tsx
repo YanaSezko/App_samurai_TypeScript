@@ -15,7 +15,6 @@ type AppType = {
 
 } */
 const App = (props:any) => {
-    debugger
     return (
         <div className="app-wrapper">
             <HeaderContainer />
