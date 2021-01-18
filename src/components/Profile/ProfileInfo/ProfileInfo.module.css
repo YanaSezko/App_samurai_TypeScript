@@ -5,3 +5,7 @@
 .description{
     padding: 20px;
 }
+.description img{
+width:200px ;
+height: 200px;
+}

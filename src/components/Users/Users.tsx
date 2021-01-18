@@ -25,8 +25,7 @@ let Users = (props: UsersPropsType) => {
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
     }
-    debugger
-    return <div>
+     return <div>
         <div>
             {pages.map(p => {
                 return <span className={(props.currentPage === p) ? styles.selected : ""}
