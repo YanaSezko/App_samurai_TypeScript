@@ -4,13 +4,13 @@ import { PostType } from "./store";
 
 export type ProfileActionsType =
 | ReturnType<typeof addPostActionCreator>
-| ReturnType<typeof updateNewPostTextActionCreator>
+//| ReturnType<typeof updateNewPostTextActionCreator>
 | ReturnType<typeof setUserProfile>
 | ReturnType<typeof setStatus>
 
 
 const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+//const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 
@@ -36,18 +36,11 @@ export const profileReducer = (state = initialState, action: ProfileActionsType)
         case ADD_POST: {
             let newPost: PostType = {
                 id: 3,
-                message: state.newPostText
+                message: action.newPostText
             }
             return {
                 ...state,
-                posts: [...state.posts, newPost],
-                newPostText: ""
-            }
-        }
-        case UPDATE_NEW_POST_TEXT: {
-            return {
-                ...state,
-                newPostText: action.newText
+                posts: [...state.posts, newPost]
             }
         }
         case SET_USER_PROFILE:{
@@ -67,10 +60,10 @@ export const profileReducer = (state = initialState, action: ProfileActionsType)
     }
 }
 //actionCreator
-export const addPostActionCreator = () =>
-    ({ type: ADD_POST } as const)
-export const updateNewPostTextActionCreator = (text: string) =>
-    ({ type: UPDATE_NEW_POST_TEXT, newText: text } as const)
+export const addPostActionCreator = (newPostText:string) =>
+    ({ type: ADD_POST, newPostText } as const)
+/* export const updateNewPostTextActionCreator = (text: string) =>
+    ({ type: UPDATE_NEW_POST_TEXT, newText: text } as const) */
 export const setUserProfile = (profile:any) =>
     ({ type: SET_USER_PROFILE, profile } as const)
 export const setStatus = (status:string) =>

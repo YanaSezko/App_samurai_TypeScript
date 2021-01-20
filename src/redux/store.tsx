@@ -60,8 +60,8 @@ export let store: StoreType = {
     },
     
     dispatch(action){
-      
         store._state.profilePage = profileReducer(store._state.profilePage, action)
+        //@ts-ignore
         store._state.dialogPage = dialogsReducer(store._state.dialogPage, action)
         store._state.usersPage = usersReducer(store._state.usersPage, action)
        //@ts-ignore

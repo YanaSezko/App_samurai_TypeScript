@@ -10,7 +10,6 @@ import {
 import Preloader from '../common/Preloader';
 import { RootStateType } from '../../redux/store';
 import { compose } from 'redux';
-import { withAuthRedirect } from './../../hoc/withAuthRedirect';
 
 type MapStatePropsType = {
    

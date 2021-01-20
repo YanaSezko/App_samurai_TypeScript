@@ -1,15 +1,12 @@
+import { AnyCnameRecord } from "dns";
 
 export type DialogsActionsType =
 | ReturnType<typeof sendMessageActionCreator>
-| ReturnType<typeof updateNewMessageBodyActionCreator>
 
-
-
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
 const SEND_MESSAGE = 'SEND-MESSAGE';
 
 export type SendMessageActionType = ReturnType<typeof sendMessageActionCreator>
-export type UpdateNewMessageBodyActionType = ReturnType<typeof updateNewMessageBodyActionCreator>
+
 
 let initialState = {
     messages: [
@@ -23,32 +20,24 @@ let initialState = {
         { id: 3, name: 'Vova' },
         { id: 4, name: 'Alex' },
         { id: 5, name: 'Zlata' }
-    ],
-    newMessageBody: ""
+    ]
 }
 
 export const dialogsReducer = (state = initialState, action: DialogsActionsType) => {
     switch (action.type) {
-        case UPDATE_NEW_MESSAGE_BODY:
-            return{
-                ...state,
-                newMessageBody: action.body
-            }
         case SEND_MESSAGE:
-            let body = state.newMessageBody
+            let body = action.newMessageBody
             return {
                 ...state,
-                newMessageBody: '',
                 messages: [...state.messages,{ id: 4, message: body }]
             }
         default:
             return state
     }
 }
-export const sendMessageActionCreator = () =>
-    ({ type: SEND_MESSAGE } as const)
-export const updateNewMessageBodyActionCreator = (body: string) =>
-    ({ type: UPDATE_NEW_MESSAGE_BODY, body: body } as const)
+
+export const sendMessageActionCreator = (newMessageBody:string) =>
+    ({ type: SEND_MESSAGE, newMessageBody } as const)
 
 export default dialogsReducer
 
