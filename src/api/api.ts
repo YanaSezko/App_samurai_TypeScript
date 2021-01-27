@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { AnyARecord, AnyCnameRecord } from 'dns'
 
 
 const instance = axios.create({
@@ -8,7 +9,6 @@ const instance = axios.create({
         "API-KEY": "2b6e2e12-95e4-4959-af89-fb3a85f352e8"
     }
 })
-debugger
 export const usersAPI = {
     
     getUsers(currentPage = 1, pageSize = 10) {
@@ -45,5 +45,12 @@ export const profileAPI = {
 export const authAPI = {
     me() {
         return instance.get(`auth/me`)
+    },
+  
+    login(email:any,password:any,rememberMe=false) {
+        return instance.post(`auth/login`, {email,password,rememberMe})
+    },
+    logout() {
+        return instance.delete(`auth/login`)
     }
 }
