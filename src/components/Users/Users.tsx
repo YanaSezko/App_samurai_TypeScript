@@ -18,17 +18,17 @@ type UsersPropsType = {
 }
 
 let Users = (props: UsersPropsType) => {
-
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
     let pages = []
-
+    
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
     }
      return <div>
         <div>
             {pages.map(p => {
-                return <span className={(props.currentPage === p) ? styles.selected : ""}
+                //@ts-ignore
+                return <span className={ props.currentPage === p && styles.selected }
                     onClick={(e) => {
                         props.onPageChanged(p);
                     }}>{p}</span>
@@ -65,9 +65,7 @@ let Users = (props: UsersPropsType) => {
                     <div>{"u.location.city"}</div>
                 </span>
             </div>
-        </div>
-
-        )
+        </div>)
         }
 
     </div>

@@ -6,3 +6,8 @@
 .formControl.error p {
     color: red
 }
+
+.formSummaryError{
+    outline: 2px solid red;
+    color: red
+}

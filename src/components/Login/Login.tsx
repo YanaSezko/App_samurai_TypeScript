@@ -6,30 +6,33 @@ import { login } from '../../redux/auth-reducer';
 import { RootStateType } from '../../redux/store';
 import { Input } from '../common/FormsControls/FormsControls';
 import { required } from './../../utils/validators/validators';
+import style from '../common/FormsControls/FormsControls.module.css'
 
-
-type FormDataType ={
-    email:string
-    password:string
-    rememborMe:boolean
-    isAuth:boolean
+type FormDataType = {
+    email: string
+    password: string
+    rememborMe: boolean
+    isAuth: boolean
 }
 
-const LoginForm:React.FC<InjectedFormProps<FormDataType>> = (props: any) => {
+const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props: any) => {
     return (
         <form onSubmit={props.handleSubmit}>
-            <div><Field placeholder={"Email"} 
-            name={"email"} 
-            component={Input}
-            validate={[required]} /></div>
-            <div><Field placeholder={"Password"} 
-            name={"password"} 
-            type={"password"}
-            component={Input}
-            validate={[required]}  /></div>
-            <div><Field type={"checkbox"} 
-            name={"rememborMe"} 
-            component={Input} /></div>
+            <div><Field placeholder={"Email"}
+                name={"email"}
+                component={Input}
+                validate={[required]} /></div>
+            <div><Field placeholder={"Password"}
+                name={"password"}
+                type={"password"}
+                component={Input}
+                validate={[required]} /></div>
+            <div><Field type={"checkbox"}
+                name={"rememborMe"}
+                component={Input} /></div>
+            {props.error && <div className={style.formSummaryError}>
+               {props.error}
+            </div>}
             <div><button>Login</button></div>
         </form>
     )
@@ -39,12 +42,12 @@ const LoginReduxForm = reduxForm<FormDataType>({
     form: 'login'
 })(LoginForm)
 
-const Login = (props:any) => {
+const Login = (props: any) => {
     const onSubmit = (formData: FormDataType) => {
         props.login(formData.email, formData.password, formData.rememborMe)
     }
-    if (props.isAuth){
-        return <Redirect to={"/profile"}/>
+    if (props.isAuth) {
+        return <Redirect to={"/profile"} />
     }
     return <div>
         <h1>LOGIN</h1>
@@ -53,8 +56,8 @@ const Login = (props:any) => {
 }
 
 
-const mapStateToProps=(state:RootStateType)=>({
-   isAuth:state.auth.isAush
+const mapStateToProps = (state: RootStateType) => ({
+    isAuth: state.auth.isAush
 })
 
-export default connect(mapStateToProps,{login})(Login)
+export default connect(mapStateToProps, { login })(Login)

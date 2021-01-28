@@ -3,8 +3,8 @@ import dialogsReducer, { DialogsActionsType } from "./dialogs-reducer";
 import usersReducer, { UsersActionsType } from "./users-reducer ";
 import authReducer from "./auth-reducer";
 
-type ActionsType = UsersActionsType & DialogsActionsType 
-& ProfileActionsType  
+type ActionsType = UsersActionsType & DialogsActionsType
+    & ProfileActionsType
 
 export type StoreType = {
     _state: RootStateType
@@ -23,7 +23,7 @@ export let store: StoreType = {
             ],
             newPostText: "текс сообщения",
             profile: {},
-            status:""
+            status: ""
         },
         dialogPage: {
             messages: [
@@ -41,11 +41,24 @@ export let store: StoreType = {
             newMessageBody: ""
         },
         usersPage: {
-            users: []
+            items: [
+                {
+                    "name": "Shubert",
+                    "id": 1,
+                    "photos": {
+                        "small": null,
+                        "large": null
+                    },
+                    "status": null,
+                    "followed": false}
+            ],
+            "totalCount": 30,
+            "error": null
         },
-        auth:{
-            isAuth:false
-        }
+        auth: {
+            isAuth: false
+        },
+        app: {}
     },
     _rerenderEntireTree() {
         store.getState()
@@ -58,13 +71,13 @@ export let store: StoreType = {
     subscribe(observer) {
         this._rerenderEntireTree = observer
     },
-    
-    dispatch(action){
+
+    dispatch(action) {
         store._state.profilePage = profileReducer(store._state.profilePage, action)
         //@ts-ignore
         store._state.dialogPage = dialogsReducer(store._state.dialogPage, action)
         store._state.usersPage = usersReducer(store._state.usersPage, action)
-       //@ts-ignore
+        //@ts-ignore
         store._state.auth = authReducer(store._state.auth, action)
 
         store._rerenderEntireTree(store._state)
@@ -90,7 +103,7 @@ export type ProfilePageType = {
     posts: Array<PostType>
     newPostText: string
     profile: any
-    status:string
+    status: string
 }
 export type DialogPageType = {
     messages: Array<MessageType>
@@ -105,7 +118,8 @@ export type RootStateType = {
     profilePage: ProfilePageType
     dialogPage: DialogPageType
     usersPage: UsersPageType
-    auth:AuthPageType
+    auth: AuthPageType
+    app: any
 }
 
 export default store;
