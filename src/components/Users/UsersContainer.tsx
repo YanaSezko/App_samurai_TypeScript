@@ -38,7 +38,7 @@ export type MapDispatchPropsType = {
     setCurrentPage: any
     toggleIsFetching: (isFetching: boolean) => void
     followingInProgress: any
-    getUsers:any
+    getUsers: any
 }
 /* let mapStateToProps = (state: RootStateType) => {
     return {
@@ -54,7 +54,7 @@ export type MapDispatchPropsType = {
 let mapStateToProps = (state: RootStateType) => {
     return {
         users: getUsers(state),
-       
+
         pageSize: getPageSize(state),
         totalUsersCount: getTotalUsersCount(state),
         currentPage: getCurrentPage(state),
@@ -96,10 +96,11 @@ export default compose(
     //withAuthRedirect,
     connect(mapStateToProps, {
         follow,
-        unfollow, 
+        unfollow,
         setCurrentPage,
         toggleFollowingProgress,
         getUsers,
         requestUsers
     })
 )(UsersContainer)
+

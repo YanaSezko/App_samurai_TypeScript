@@ -3,6 +3,7 @@ import Preloader from "../../common/Preloader";
 import s from './ProfileInfo.module.css'
 import logo from '../../../img/logo.png'
 import ProfileStatus from "./ProfileStatus";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 type ProfileInfoType=any
 
@@ -16,7 +17,7 @@ const ProfileInfo = (props:ProfileInfoType) => {
             alt="image"/>
     <section className={s.description}>
         <img src={logo} alt="img"/>
-       <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+       <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
     </section>
     </>
 }
