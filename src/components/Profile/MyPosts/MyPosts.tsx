@@ -12,13 +12,13 @@ type MyPostType = {
     posts: PostType[]
 }
 
-const MyPosts = (props: MyPostType) => {
+const MyPosts = React.memo((props: MyPostType) => {
 
     let postsElements = props.posts.map(p => <Post id={p.id} message={p.message} />)
 
     let newPostElement = React.createRef<HTMLTextAreaElement>();
 
-    function onAddPost(values: FormDataType) {
+    let onAddPost =(values: FormDataType)=> {
          //@ts-ignore
         props.addPost(values.newPostText)
     }
@@ -32,9 +32,9 @@ const MyPosts = (props: MyPostType) => {
             </ul>
         </section>
     )
-}
+})
 type FormDataType ={
-    NewPostText:string
+    newPostText:string
 }
 const maxLength10 =maxLengthCreator(10)
 

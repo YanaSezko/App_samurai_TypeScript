@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch:Dispatch) => {
         } 
     }
 }
-
+//@ts-ignore
 const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
 
 export default MyPostsContainer
