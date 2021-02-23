@@ -19,7 +19,6 @@ const MyPosts = React.memo((props: MyPostType) => {
     let newPostElement = React.createRef<HTMLTextAreaElement>();
 
     let onAddPost =(values: FormDataType)=> {
-         //@ts-ignore
         props.addPost(values.newPostText)
     }
 
@@ -27,7 +26,7 @@ const MyPosts = React.memo((props: MyPostType) => {
         <section className={s.myposts}>
             <h2>my posts</h2>
             <AddNewPostFormRedux onSubmit={onAddPost} />
-            <ul>
+            <ul >
                 {postsElements}
             </ul>
         </section>
@@ -41,7 +40,7 @@ const maxLength10 =maxLengthCreator(10)
 const AddNewPostForm:React.FC<InjectedFormProps<FormDataType>> = (props: any) => {
     return (
         <form onSubmit={props.handleSubmit}>
-            <Field placeholder={"Post message"} name="NewPostText" component={Textarea} validate={[required,maxLength10]}/>
+            <Field placeholder={"Post message"} name="newPostText" component={Textarea} validate={[required,maxLength10]}/>
             <p><button>Add post</button></p>
         </form>
     )

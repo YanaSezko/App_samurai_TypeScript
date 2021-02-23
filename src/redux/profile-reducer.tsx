@@ -40,7 +40,8 @@ export const profileReducer = (state = initialState, action: ProfileActionsType)
             }
             return {
                 ...state,
-                posts: [...state.posts, newPost]
+                posts: [...state.posts, newPost],
+                newPostText: ""
             }
         }
         case SET_USER_PROFILE:{
