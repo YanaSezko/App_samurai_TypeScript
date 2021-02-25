@@ -15,9 +15,9 @@ type FormDataType = {
     isAuth: boolean
 }
 
-const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props: any) => {
+const LoginForm: React.FC<InjectedFormProps<FormDataType>> = ({handleSubmit, error}) => {
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <div><Field placeholder={"Email"}
                 name={"email"}
                 component={Input}
@@ -30,8 +30,8 @@ const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props: any) => {
             <div><Field type={"checkbox"}
                 name={"rememborMe"}
                 component={Input} /></div>
-            {props.error && <div className={style.formSummaryError}>
-               {props.error}
+            {error && <div className={style.formSummaryError}>
+               {error}
             </div>}
             <div><button>Login</button></div>
         </form>
@@ -57,7 +57,7 @@ const Login = (props: any) => {
 
 
 const mapStateToProps = (state: RootStateType) => ({
-    isAuth: state.auth.isAush
+    isAuth: state.auth.isAuth
 })
 
 export default connect(mapStateToProps, { login })(Login)

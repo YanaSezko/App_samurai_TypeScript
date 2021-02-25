@@ -1,12 +1,14 @@
 import { createSelector } from "reselect"
+import { RootStateType, UserType } from "./store"
 
-const getUsersSelector = (state: any) => {
-    return state.usersPage.users
+const getUsersSelector = (state:RootStateType)=>{
+    debugger
+    return state.usersPage.users;
 }
-
-export const getUsers = createSelector(getUsersSelector, (users) => {
-    return users.filter((u:any) => true)
-})
+export const getUsers = createSelector(getUsersSelector,
+    (users:Array<UserType>)=>{
+        return users.filter((u:UserType) => true);
+    })
 
 export const getPageSize = (state: any) => {
     return state.usersPage.pageSize

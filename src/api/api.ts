@@ -1,5 +1,11 @@
 import axios from 'axios'
-import { AnyARecord, AnyCnameRecord } from 'dns'
+import { UserType } from '../redux/store'
+
+type GetItemsType = {
+    items: Array<UserType>
+    totalCount:number
+    error: string | null
+}
 
 
 const instance = axios.create({
@@ -10,9 +16,8 @@ const instance = axios.create({
     }
 })
 export const usersAPI = {
-    
     getUsers(currentPage = 1, pageSize = 10) {
-        return instance.get(`users?page=${currentPage}&count=${pageSize}`)
+        return instance.get<GetItemsType>(`users?page=${currentPage}&count=${pageSize}`)
             .then(response =>{
                 return response.data
             })
