@@ -2,7 +2,6 @@ import { createSelector } from "reselect"
 import { RootStateType, UserType } from "./store"
 
 const getUsersSelector = (state:RootStateType)=>{
-    debugger
     return state.usersPage.users;
 }
 export const getUsers = createSelector(getUsersSelector,
