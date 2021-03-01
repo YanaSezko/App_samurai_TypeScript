@@ -2,6 +2,7 @@
     color: #fff;
     grid-area: n;
     background-color: #80a4ff;
+    min-width: 200px;
 
 }
 .nav ul{

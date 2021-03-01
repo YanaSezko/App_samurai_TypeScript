@@ -1,4 +1,9 @@
-.selected{
-    color: blueviolet;    
+.selected {
+    color: rgb(38, 146, 189, 226);
     font-weight: bold;
-    }
+}
+
+span {
+    padding: 5px;
+    cursor: pointer;
+}
