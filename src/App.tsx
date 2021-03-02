@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import './App.css';
 import Navbar from "./components/Navbar/Navdar";
-import { BrowserRouter, Route, withRouter } from "react-router-dom";
+import { HashRouter, Route, withRouter } from "react-router-dom";
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
 //import ProfileContainer from './components/Profile/ProfileContainer';
@@ -73,12 +73,12 @@ let AppContainer = compose(
     connect(mapStateToProps, { initializeApp }))(App);
 
 const MainApp = (props: any) => {
-    return <BrowserRouter>
+    return <HashRouter/*  basename = {process.env.PUBLIC_URL} */>
         <Provider store={store} >
             //@ts-ignore
             < AppContainer />
         </Provider>
-    </BrowserRouter>
+    </HashRouter>
 }
 
 export default MainApp;
