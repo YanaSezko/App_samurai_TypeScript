@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/App_samurai_TypeScript/static/css/main.b0e52d66.chunk.css",
+    "main.js": "/App_samurai_TypeScript/static/js/main.e257726c.chunk.js",
+    "main.js.map": "/App_samurai_TypeScript/static/js/main.e257726c.chunk.js.map",
+    "runtime-main.js": "/App_samurai_TypeScript/static/js/runtime-main.496669e2.js",
+    "runtime-main.js.map": "/App_samurai_TypeScript/static/js/runtime-main.496669e2.js.map",
+    "static/js/2.a08fb8e5.chunk.js": "/App_samurai_TypeScript/static/js/2.a08fb8e5.chunk.js",
+    "static/js/2.a08fb8e5.chunk.js.map": "/App_samurai_TypeScript/static/js/2.a08fb8e5.chunk.js.map",
+    "static/css/3.3d00704e.chunk.css": "/App_samurai_TypeScript/static/css/3.3d00704e.chunk.css",
+    "static/js/3.950dd49d.chunk.js": "/App_samurai_TypeScript/static/js/3.950dd49d.chunk.js",
+    "static/js/3.950dd49d.chunk.js.map": "/App_samurai_TypeScript/static/js/3.950dd49d.chunk.js.map",
+    "static/css/4.23a88ac3.chunk.css": "/App_samurai_TypeScript/static/css/4.23a88ac3.chunk.css",
+    "static/js/4.c0f44d13.chunk.js": "/App_samurai_TypeScript/static/js/4.c0f44d13.chunk.js",
+    "static/js/4.c0f44d13.chunk.js.map": "/App_samurai_TypeScript/static/js/4.c0f44d13.chunk.js.map",
+    "index.html": "/App_samurai_TypeScript/index.html",
+    "precache-manifest.6f6658bc0b337085dabebe03f391be7b.js": "/App_samurai_TypeScript/precache-manifest.6f6658bc0b337085dabebe03f391be7b.js",
+    "service-worker.js": "/App_samurai_TypeScript/service-worker.js",
+    "static/css/3.3d00704e.chunk.css.map": "/App_samurai_TypeScript/static/css/3.3d00704e.chunk.css.map",
+    "static/css/4.23a88ac3.chunk.css.map": "/App_samurai_TypeScript/static/css/4.23a88ac3.chunk.css.map",
+    "static/css/main.b0e52d66.chunk.css.map": "/App_samurai_TypeScript/static/css/main.b0e52d66.chunk.css.map",
+    "static/js/2.a08fb8e5.chunk.js.LICENSE.txt": "/App_samurai_TypeScript/static/js/2.a08fb8e5.chunk.js.LICENSE.txt",
+    "static/media/logo.png": "/App_samurai_TypeScript/static/media/logo.50a503b3.png",
+    "static/media/preloader.svg": "/App_samurai_TypeScript/static/media/preloader.2569dfb7.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.496669e2.js",
+    "static/js/2.a08fb8e5.chunk.js",
+    "static/css/main.b0e52d66.chunk.css",
+    "static/js/main.e257726c.chunk.js"
+  ]
+}
