@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import './App.css';
 import Navbar from "./components/Navbar/Navdar";
 import { BrowserRouter, Route, withRouter } from "react-router-dom";
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
-import ProfileContainer from './components/Profile/ProfileContainer';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
+//import ProfileContainer from './components/Profile/ProfileContainer';
+//import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/Users/UsersContainer'
 import { connect, Provider } from 'react-redux';
 import { compose } from 'redux';
@@ -13,7 +13,11 @@ import { initializeApp } from './redux/app-reducer';
 import { RootStateType } from './redux/store';
 import Preloader from './components/common/Preloader';
 import { store } from './redux/redux-store';
-
+import { withSuspense } from './hoc/withSuspense';
+//@ts-ignore
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+//@ts-ignore
+const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 
 type PropsType = OwnPropsType
 
@@ -43,12 +47,10 @@ class App extends React.Component<PropsType>{
                 <Navbar />
                 <main className='app-wrapper-content'>
                     <Route path='/profile/:userId?'
-                        //@ts-ignore
-                        render={() => <ProfileContainer />} />
+                        render={withSuspense(ProfileContainer)} />
 
                     <Route /*exact*/ path='/dialogs'
-                        //@ts-ignore
-                        render={() => <DialogsContainer />} />
+                        render={withSuspense(DialogsContainer)} />
 
                     <Route path='/users'
                         //@ts-ignore
