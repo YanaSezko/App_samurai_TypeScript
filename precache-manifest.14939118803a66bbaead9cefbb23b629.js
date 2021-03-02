@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b501f5f8d8643b20343fa0759c8c9b4a",
+    "revision": "577798a287f302c4c5e5a68a1ca85140",
     "url": "/App_samurai_TypeScript/index.html"
   },
   {
@@ -8,36 +8,36 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/App_samurai_TypeScript/static/css/3.3d00704e.chunk.css"
   },
   {
-    "revision": "7f9bc6073c206c506aed",
+    "revision": "06b61817e6feda57ebe6",
     "url": "/App_samurai_TypeScript/static/css/4.23a88ac3.chunk.css"
   },
   {
-    "revision": "795e13dea705442802f3",
+    "revision": "4181bf0a5aa174902cbc",
     "url": "/App_samurai_TypeScript/static/css/main.b0e52d66.chunk.css"
   },
   {
-    "revision": "77d10c5f65c576be91c3",
-    "url": "/App_samurai_TypeScript/static/js/2.a08fb8e5.chunk.js"
+    "revision": "7490fdeaea19da42b0a0",
+    "url": "/App_samurai_TypeScript/static/js/2.8b99ec44.chunk.js"
   },
   {
     "revision": "9b318b6fb13190fe82c0677e9264b3c7",
-    "url": "/App_samurai_TypeScript/static/js/2.a08fb8e5.chunk.js.LICENSE.txt"
+    "url": "/App_samurai_TypeScript/static/js/2.8b99ec44.chunk.js.LICENSE.txt"
   },
   {
     "revision": "e11b95481a970d9bfe0d",
     "url": "/App_samurai_TypeScript/static/js/3.950dd49d.chunk.js"
   },
   {
-    "revision": "7f9bc6073c206c506aed",
-    "url": "/App_samurai_TypeScript/static/js/4.c0f44d13.chunk.js"
+    "revision": "06b61817e6feda57ebe6",
+    "url": "/App_samurai_TypeScript/static/js/4.6436b4cf.chunk.js"
   },
   {
-    "revision": "795e13dea705442802f3",
-    "url": "/App_samurai_TypeScript/static/js/main.e257726c.chunk.js"
+    "revision": "4181bf0a5aa174902cbc",
+    "url": "/App_samurai_TypeScript/static/js/main.b96019e4.chunk.js"
   },
   {
-    "revision": "3f4942656fbe8d049164",
-    "url": "/App_samurai_TypeScript/static/js/runtime-main.496669e2.js"
+    "revision": "a3dc7390bc6627e18c24",
+    "url": "/App_samurai_TypeScript/static/js/runtime-main.73a6129f.js"
   },
   {
     "revision": "50a503b3dc72b689f8015711a1843de5",
