@@ -18,12 +18,6 @@ type ProfileInfoType = {
 const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto, saveProfile }: ProfileInfoType) => {
     let [editMode, setEditMode] = useState(false)
 
-    const onMainPhotoSelected = (e: any) => {
-        if (e.target.files.length) {
-            savePhoto(e.target.files[0])
-        }
-    }
-
     const onSubmit = (formData: any) => {
         saveProfile(formData).then(() => {
             setEditMode(false)
@@ -32,6 +26,12 @@ const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto, savePr
     }
     if (!profile) {
         return <Preloader />
+    }
+
+    const onMainPhotoSelected = (e: any) => {
+        if (e.target.files.length) {
+            savePhoto(e.target.files[0])
+        }
     }
     return <div>
         <div className={s.description}>
