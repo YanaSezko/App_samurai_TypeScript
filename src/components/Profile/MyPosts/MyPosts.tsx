@@ -7,18 +7,20 @@ import { maxLengthCreator, required } from "../../../utils/validators/validators
 import { Textarea } from "../../common/FormsControls/FormsControls";
 
 type MyPostType = {
-  //  updateNewPostText: (text: string) => void
-    addPost: (values:string) => void
+    //  updateNewPostText: (text: string) => void
+    addPost: (values: string) => void
     posts: PostType[]
 }
 
 const MyPosts = React.memo((props: MyPostType) => {
 
-    let postsElements = props.posts.map(p => <Post id={p.id} message={p.message} />)
+    let postsElements = 
+[...props.posts].reverse()
+    .map(p => <Post id={p.id} message={p.message} />)
 
     let newPostElement = React.createRef<HTMLTextAreaElement>();
 
-    let onAddPost =(values: FormDataType)=> {
+    let onAddPost = (values: FormDataType) => {
         props.addPost(values.newPostText)
     }
 
@@ -32,17 +34,19 @@ const MyPosts = React.memo((props: MyPostType) => {
         </section>
     )
 })
-type FormDataType ={
-    newPostText:string
+type FormDataType = {
+    newPostText: string
 }
-const maxLength10 =maxLengthCreator(10)
+const maxLength10 = maxLengthCreator(10)
 
-const AddNewPostForm:React.FC<InjectedFormProps<FormDataType>> = (props: any) => {
+const AddNewPostForm: React.FC<InjectedFormProps<FormDataType>> = (props: any) => {
     return (
-        <form onSubmit={props.handleSubmit}>
-            <Field placeholder={"Post message"} name="newPostText" component={Textarea} validate={[required,maxLength10]}/>
-            <p><button>Add post</button></p>
-        </form>
+        <div>
+            <form onSubmit={props.handleSubmit}>
+                <Field placeholder={"Post message"} name="newPostText" component={Textarea} validate={[required, maxLength10]} />
+                <p><button>Add post</button></p>
+            </form>
+        </div>
     )
 }
 

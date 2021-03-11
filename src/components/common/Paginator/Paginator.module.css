@@ -1,8 +1,10 @@
-.selected {
-    color: rgb(38, 146, 189, 226);
-    font-weight: bold;
+.pageNumber{
+    color: saddlebrown;
 }
-
+.selected {
+    font-weight: bold;
+    color: #fda8a8;
+}
 span {
     padding: 5px;
     cursor: pointer;

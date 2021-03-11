@@ -1,8 +1,6 @@
 import profileReducer, { ProfileActionsType } from "./profile-reducer";
 import dialogsReducer, { DialogsActionsType } from "./dialogs-reducer";
 import usersReducer, { UsersActionsType } from "./users-reducer ";
-import authReducer from "./auth-reducer";
-import { getIsFetching } from './users-selectors';
 
 type ActionsType = UsersActionsType & DialogsActionsType
     & ProfileActionsType
@@ -23,7 +21,26 @@ export let store: StoreType = {
                 { id: 2, message: "It's my first post" }
             ],
             newPostText: "текс сообщения",
-            profile: null,
+            profile: {
+                userId: 6377,
+                lookingForAJob: "yes",
+                lookingForAJobDescription: "",
+                fullName: "",
+                contacts: {
+                    github: "",
+                    vk: "",
+                    facebook: "",
+                    instagram: "",
+                    twitter: "",
+                    website: "",
+                    youtube: "",
+                    mainLink: ""
+                },
+                photos: {
+                    small: "",
+                    large: ""
+                }
+            },
             status: ""
         },
         dialogPage: {
@@ -54,7 +71,9 @@ export let store: StoreType = {
             userId: 6377,
             email: '',
             login: '',
-            isAuth: false
+            logout: '',
+            isAuth: false,
+            captchaUrl: null
         },
         app: {}
     },
@@ -63,7 +82,7 @@ export let store: StoreType = {
         console.log('state changed')
     },
 
-    getState() {
+   getState() {
         return this._state
     },
     subscribe(observer) {
@@ -74,7 +93,7 @@ export let store: StoreType = {
         store._state.profilePage = profileReducer(store._state.profilePage, action)
         store._state.dialogPage = dialogsReducer(store._state.dialogPage, action)
         store._state.usersPage = usersReducer(store._state.usersPage, action)
-   //     store._state.auth = authReducer(store._state.auth, action)
+        //     store._state.auth = authReducer(store._state.auth, action)
 
         store._rerenderEntireTree(store._state)
     }
@@ -100,11 +119,33 @@ export type UserType = {
     followed: false
 }
 
+export type profileType = {
+    userId: number
+    lookingForAJob: string
+    lookingForAJobDescription: string
+    fullName: string
+    contacts: profileContactsType
+    photos: photosType
+}
+type profileContactsType = any/* {
+    github: string
+    vk: string
+    facebook: string
+    instagram: string
+    twitter: string
+    website: string
+    youtube: string
+    mainLink: string
+} */
+type photosType = {
+    small: string
+    large: string
+}
 
 export type ProfilePageType = {
     posts: Array<PostType>
     newPostText: string
-    profile: any
+    profile: profileType
     status: string
 }
 export type DialogPageType = {
@@ -113,8 +154,14 @@ export type DialogPageType = {
     newMessageBody: string
 
 }
-export type AuthPageType = any
-
+export type AuthPageType = {
+    userId: number
+    email: string
+    login: string
+    logout: string
+    isAuth: boolean
+    captchaUrl: string|null
+}
 
 export type UsersPageType = {
     users: any

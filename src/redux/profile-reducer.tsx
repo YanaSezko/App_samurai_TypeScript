@@ -1,5 +1,8 @@
+import { stopSubmit } from "redux-form";
 import { profileAPI, usersAPI } from "../api/api";
-import { PostType } from "./store";
+import getState, { PostType } from "./store";
+
+
 
 
 export type ProfileActionsType =
@@ -7,19 +10,13 @@ export type ProfileActionsType =
     //| ReturnType<typeof updateNewPostTextActionCreator>
     | ReturnType<typeof setUserProfile>
     | ReturnType<typeof setStatus>
-
+    | ReturnType<typeof savePhotoSuccess>
 
 const ADD_POST = 'ADD-POST';
 //const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
-
-/* export type InitialStateType={
-    posts:Array<any>
-    newPostText: string
-    profile:any
- }
- */
+const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS'
 
 let initialState = {
     posts: [
@@ -30,8 +27,14 @@ let initialState = {
     profile: null,
     status: ""
 }
+type initialStateType = {
+    posts: any
+    newPostText: string
+    profile: any
+    status: string
+}
 
-export const profileReducer = (state = initialState, action: ProfileActionsType) => {
+export const profileReducer = (state: initialStateType = initialState, action: ProfileActionsType): initialStateType => {
     switch (action.type) {
         case ADD_POST: {
             let newPost: PostType = {
@@ -56,6 +59,16 @@ export const profileReducer = (state = initialState, action: ProfileActionsType)
                 status: action.status
             }
         }
+        case SAVE_PHOTO_SUCCESS: {
+            return {
+                ...state,
+                profile: {
+                    ...state.profile,
+                    photos: action.photos
+                }
+            };
+        }
+
         default:
             return state
     }
@@ -69,7 +82,8 @@ export const setUserProfile = (profile: any) =>
     ({ type: SET_USER_PROFILE, profile } as const)
 export const setStatus = (status: string) =>
     ({ type: SET_STATUS, status } as const)
-
+export const savePhotoSuccess = (photos: any) =>
+    ({ type: SAVE_PHOTO_SUCCESS, photos } as const)
 
 //thunkCreator    
 export const getUserProfile = (userId: any) => async (dispatch: any) => {
@@ -87,7 +101,22 @@ export const updateStatus = (status: string) => async (dispatch: any) => {
         dispatch(setStatus(status))
     }
 }
+export const savePhoto = (file: any) => async (dispatch: any) => {
+    let response = await profileAPI.savePhoto(file)
+    if (response.data.resultCode === 0) {
+        dispatch(savePhotoSuccess(response.data.data.photos));
+    }
+}
 
-
+export const saveProfile = (profile: any) => async ( dispatch:any, getState:any)=> {
+    const userId = getState().auth.userId
+    let response = await profileAPI.saveProfile(profile)
+    if (response.data.resultCode === 0) {
+        dispatch(getUserProfile(userId));
+    } else {
+        dispatch(stopSubmit("edit-profile", { _error: response.data.messages[0] }))//{"contacts":{"facebook":response.data.messages[0]}}
+        return Promise.reject(response.data.messages[0])
+    }
+}
 
 export default profileReducer

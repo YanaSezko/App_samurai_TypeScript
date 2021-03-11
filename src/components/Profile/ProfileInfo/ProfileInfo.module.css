@@ -9,3 +9,9 @@
 width:200px ;
 height: 200px;
 }
+.profileData span{
+    font-weight: bold;
+}
+.contact{
+    padding-left: 30px;
+}
