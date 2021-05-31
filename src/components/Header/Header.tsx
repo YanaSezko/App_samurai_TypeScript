@@ -1,8 +1,8 @@
 import React from "react";
 import s from './Header.module.css';
 import logo from "../../img/logo.png"
-import { NavLink } from 'react-router-dom';
-import { logout } from './../../redux/auth-reducer';
+import { NavLink, Redirect } from 'react-router-dom';
+
 
 const Header: React.FC<any> = (props:any) => {
     return (
@@ -11,8 +11,9 @@ const Header: React.FC<any> = (props:any) => {
             <div className={s.loginBlock}>
                 {props.isAuth 
                 ? <div>{props.login} - <button onClick={props.logout}>LOGOUT</button></div> 
-                :<NavLink to={"/login"}>Login</NavLink>
-}
+                :  <div><NavLink to={"/login"}>Login</NavLink>
+                    <Redirect to={"/login"}></Redirect></div>
+                }
             </div>
         </header>
     )

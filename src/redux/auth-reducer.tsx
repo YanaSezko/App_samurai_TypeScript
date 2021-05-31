@@ -11,7 +11,7 @@ export type InitialStateType = {
     email: string | null
     login: string | null
     isAuth: boolean
-    captchaUrl: string | null
+    captchaUrl?: any
 }
 export type AuthActionsType =
     | ReturnType<typeof setAuthUserData>
@@ -38,7 +38,7 @@ export const authReducer = (state: InitialStateType = initialState, action: Auth
     }
 }
 
-export const setAuthUserData = (userId: any, email: any, login: any, isAuth: any) =>
+export const setAuthUserData = (userId: number|null, email: string|null, login: string|null, isAuth: boolean|null) =>
     ({ type: SET_USER_DATA, payload: { userId, email, login, isAuth } } as const)
 
 export const getCaptchaUrlSuccess = (captchaUrl: string) =>
@@ -73,16 +73,16 @@ export const login = (email: any, password: any, rememberMe: boolean, captcha:an
 
 export const getCaptchaUrl = () => async (dispatch: any) => {
     const response = await securityAPI.getCaptchaUrl()
-    const captchaUrl:string = response.data.url
+    const captchaUrl = response.data.url
 
     dispatch(getCaptchaUrlSuccess(captchaUrl))
 }
 
 export const logout = () => async (dispatch: any) => {
     let response = await authAPI.logout()
-    if (response.data.resultCode === 0) {
-        dispatch(setAuthUserData(null, null, null, false))
-    }
+        if (response.data.resultCode === 0) {
+            dispatch(setAuthUserData(null, null, null,false));
+        }
 }
 
 
